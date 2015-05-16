@@ -43,7 +43,7 @@ class DreamController extends Controller {
      */
     public function index()
     {
-        return response()->json($this->dreamRepository->getDreamsWithUserPaginate(4));
+        return $this->dreamRepository->getDreamsWithUserPaginate(4);
     }
 
     /**
@@ -58,7 +58,7 @@ class DreamController extends Controller {
 
         $this->dreamRepository->store($request->all(), Auth::id());
 
-        return response()->json($this->dreamRepository->getDreamsWithUserPaginate(4));
+        return $this->dreamRepository->getDreamsWithUserPaginate(4);
     }
 
     /**
@@ -74,7 +74,7 @@ class DreamController extends Controller {
 
         if ($this->dreamRepository->update($request->all(), $id)) 
         {
-            return response()->json(['result' => 'success']);
+            return ['result' => 'success'];
         }
     }
 
@@ -88,7 +88,7 @@ class DreamController extends Controller {
     {
         if ($this->dreamRepository->destroy($id)) 
         {
-            return response()->json(['result' => 'success']);
+            return ['result' => 'success'];
         }
     }
 

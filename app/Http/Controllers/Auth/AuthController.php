@@ -27,7 +27,7 @@ class AuthController extends Controller {
      */
     public function getLog()
     {
-        return response()->json(['auth' => Auth::check()]);
+        return ['auth' => Auth::check()];
     }
 
     /**
@@ -47,10 +47,10 @@ class AuthController extends Controller {
 
         if (Auth::attempt($credentials, $request->has('remember')))
         {
-            return response()->json(['result' => 'success']);
+            return ['result' => 'success'];
         }
 
-        return response()->json(['result' => 'fail']);
+        return ['result' => 'fail'];
     }
 
     /**
@@ -62,7 +62,7 @@ class AuthController extends Controller {
     {
         Auth::logout();
 
-        return response()->json(['result' => 'success']);
+        return ['result' => 'success'];
     }
 
     /**
