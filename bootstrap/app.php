@@ -15,7 +15,9 @@ Dotenv::load(__DIR__.'/../');
 |
 */
 
-$app = new Laravel\Lumen\Application;
+$app = new Laravel\Lumen\Application(
+    realpath(__DIR__.'/../')
+);
 
 $app->withFacades();
 
@@ -33,13 +35,12 @@ $app->withEloquent();
 */
 
 $app->singleton(
-    'Illuminate\Contracts\Debug\ExceptionHandler',
-    'App\Exceptions\Handler'
+    Illuminate\Contracts\Debug\ExceptionHandler::class,
+    App\Exceptions\Handler::class
 );
-
 $app->singleton(
-    'Illuminate\Contracts\Console\Kernel',
-    'App\Console\Kernel'
+    Illuminate\Contracts\Console\Kernel::class,
+    App\Console\Kernel::class
 );
 
 /*
@@ -54,16 +55,16 @@ $app->singleton(
 */
 
 $app->middleware([
-	'Illuminate\Cookie\Middleware\EncryptCookies',
-	'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
-	'Illuminate\Session\Middleware\StartSession',
-	'Illuminate\View\Middleware\ShareErrorsFromSession',
-	'Laravel\Lumen\Http\Middleware\VerifyCsrfToken',
- ]);
+    Illuminate\Cookie\Middleware\EncryptCookies::class,
+    Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+    Illuminate\Session\Middleware\StartSession::class,
+    Illuminate\View\Middleware\ShareErrorsFromSession::class,
+    Laravel\Lumen\Http\Middleware\VerifyCsrfToken::class,
+]);
 
 $app->routeMiddleware([
-	'auth' => 'App\Http\Middleware\Authenticate',
-	'guest' => 'App\Http\Middleware\RedirectIfAuthenticated',
+	'auth' => App\Http\Middleware\Authenticate::class,
+	'guest' => App\Http\Middleware\RedirectIfAuthenticated::class,
 ]);
 
 /*
