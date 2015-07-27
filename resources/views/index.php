@@ -154,7 +154,6 @@
                     <div class="modal-body">
 
                         <form ng-submit="submitChange()" accept-charset="UTF-8" role="form">
-                            <input type="hidden" name="_token" value="<?php session()->getToken() ?>">
                             <div class="row">
 
                                 <div class="form-group col-lg-12" ng-class="{'has-error': errorContent}">
@@ -186,7 +185,6 @@
                                 <div ng-show="isAlert" class="alert alert-danger" role="alert">
                                     These credentials do not match our records.
                                 </div>	                            
-                                <input type="hidden" name="_token" value="<?php session()->getToken() ?>">
                                 <div class="row">
 
                                     <div class="form-group col-lg-6" ng-class="{'has-error': errorEmail}">
@@ -223,7 +221,6 @@
                         <div ng-show="isLogged" >
                             <h2 class="text-center">Add a dream</h2>
                             <form ng-controller="DreamCtrl" ng-submit="submitCreate()" accept-charset="UTF-8" role="form">
-                                <input type="hidden" name="_token" value="<?php session()->getToken() ?>">
                                 <div class="row">
 
                                     <div class="form-group col-lg-12" ng-class="{'has-error': errorCreateContent}">
